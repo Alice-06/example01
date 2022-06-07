@@ -32,7 +32,7 @@
 			<% if(searchGubun.equals("") || searchData.equals("")){ %>
 				* 전체 레코드 : <%= totalRecord%>건(<b><%=pageNumber %></b>/<%=totalPage %>)
 			<%	}else{ %>
-				* 검색어 <font style="color: red; font-weight: bold;">"<%=searchData %>"</font>(으)로 검색된 레코드 : <%=list.size() %>건(<b><%=pageNumber %></b>/<%=totalPage %>)
+				* 검색어 <font style="color: red; font-weight: bold;">"<%=searchData %>"</font>(으)로 검색된 레코드 : <%=totalRecord %>건(<b><%=pageNumber %></b>/<%=totalPage %>)
 			<%	} %>
 		</tr>
 		<tr align="center" style="font-weight: bold;">
@@ -64,7 +64,7 @@
 		}
 		%>
 		<tr>
-			<td><button type="button" onclick="suntaekScript();" style="background: red; color: white; border: 0px;">X</button></td>
+			<td><button type="button" onclick="suntaekScript();" style="background: red; color: white; border: 0px;" align="center">X</button></td>
 			<td colspan="5" style="padding: 10px 0px;" align="center">
 				<select name="searchGubun">
 						<option value=""<%if (searchGubun.equals("")) {	out.println("selected");}%>>--선택--</option>
