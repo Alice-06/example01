@@ -4,6 +4,7 @@
 
 
 <table border="1" align="center" style="width: 80%;">
+
 	<tr><td colspan="2"><h2>메모 상세보기</h2></td></tr>
 	<tr>
 		<td>순번</td>
@@ -27,6 +28,8 @@
 			|
 			<a href="#" onclick="move('memo_list','');">목록으로</a>
 			|
+			<a href="#" onclick="move('memo_sakjeProc','<%=dto.getNo()%>');">메모삭제</a>
+			|
 			</div>
 		</td>
 	</tr>
@@ -34,6 +37,8 @@
 </body>
 <script>
 function move(value1, value2){
-	location.href = "main.jsp?menuGubun=" + value1 + "&no=" + value2
+	if(confirm('정말 삭제할까요?')){
+		location.href = "main.jsp?menuGubun=" + value1 + "&no=" + value2
+	}
 }
 </script>
