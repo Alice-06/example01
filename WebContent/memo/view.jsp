@@ -28,7 +28,7 @@
 			|
 			<a href="#" onclick="move('memo_list','');">목록으로</a>
 			|
-			<a href="#" onclick="move('memo_sakjeProc','<%=dto.getNo()%>');">메모삭제</a>
+			<a href="#" onclick="sakje('memo_sakjeProc','<%=dto.getNo()%>');">메모삭제</a>
 			|
 			</div>
 		</td>
@@ -37,6 +37,9 @@
 </body>
 <script>
 function move(value1, value2){
+	location.href = "main.jsp?menuGubun=" + value1 + "&no=" + value2
+}
+function sakje(value1, value2){
 	if(confirm('정말 삭제할까요?')){
 		location.href = "main.jsp?menuGubun=" + value1 + "&no=" + value2
 	}
