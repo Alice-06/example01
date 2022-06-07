@@ -36,7 +36,7 @@
 		</td>
 	</tr>
 	<tr>
-		<td colspan="2" style="padding: 20px;">
+		<td colspan="2" style="padding: 20px;" align="center">
 			<jsp:include page="list_inner.jsp"></jsp:include>
 		</td>
 	</tr>

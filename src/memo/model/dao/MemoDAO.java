@@ -227,4 +227,46 @@ public class MemoDAO {
 		}
 		return result;
 	}
+	
+	
+	public int setDeleteBatch(String[] array) {
+		int result = 0;
+		int[] count = new int[array.length];
+		try {
+			conn = DB.dbConn();
+			//------------------------------------
+			conn.setAutoCommit(false);
+			
+			String sql = "delete from memo where no = ? ";
+			pstmt = conn.prepareStatement(sql);
+			
+			for(int i=0; i<array.length; i++) {
+				pstmt.setInt(1, Integer.parseInt(array[i]));
+				pstmt.addBatch();
+			}
+			
+			count = pstmt.executeBatch();
+			conn.commit();
+			//------------------------------------
+		}catch(Exception e) {
+			//e.printStackTrace();
+			try {
+				conn.rollback();
+			}catch(Exception e2) {
+				e2.printStackTrace();
+			}
+		}finally {
+			try {
+				conn.setAutoCommit(true);
+			}catch(Exception e3) {
+				e3.printStackTrace();
+			}
+			DB.DBConnClose(rs, pstmt, conn);
+		}
+		result = count.length;
+		System.out.println("result : " + result);
+		return result;
+	}
 }
+
+	

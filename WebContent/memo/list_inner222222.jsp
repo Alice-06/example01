@@ -27,7 +27,6 @@
 
 %>
 	<table border="1" style="width: 800px;">
-	<input type="hidden" name="suntaekNo">
 		<tr>
 			<% if(searchGubun.equals("") || searchData.equals("")){ %>
 				* 전체 레코드 : <%= totalRecord%>건(<b><%=pageNumber %></b>/<%=totalPage %>)
@@ -36,9 +35,6 @@
 			<%	} %>
 		</tr>
 		<tr align="center" style="font-weight: bold;">
-			<td>
-				<input type="checkbox" id="checkAll" name="checkAll" >
-			</td>
 			<td>ID</td>
 			<td>이름</td>
 			<td>메모</td>
@@ -51,9 +47,6 @@
 			memo = memo.replace("\n", "<br>");
 		%>
 		<tr>
-			<td width="20px">
-				<input type="checkbox" name="checkNo" value="<%=imsidto.getNo()%>">
-			</td>
 			<td><%=jj%></td>
 			<td><%=imsidto.getName()%></td>
 			<td><a href="#"	onclick="move('memo_view','<%=imsidto.getNo()%>');"><%=memo%></a></td>
@@ -64,8 +57,7 @@
 		}
 		%>
 		<tr>
-			<td><button type="button" onclick="suntaekScript();" style="background: red; color: white; border: 0px;">X</button></td>
-			<td colspan="5" style="padding: 10px 0px;" align="center">
+			<td colspan="4" style="padding: 10px 0px;" align="center">
 				<select name="searchGubun">
 						<option value=""<%if (searchGubun.equals("")) {	out.println("selected");}%>>--선택--</option>
 						<option value="name"<%if (searchGubun.equals("name")) {	out.println("selected");}%>>이름</option>
@@ -133,15 +125,6 @@
 <%	} %>
 </table>
 <script>
-$(document).ready(function(){
-	$("#checkAll").click(function(){
-		if($("#checkAll").prop("checked")){
-			$("input[name=checkNo]").prop("checked", true);
-		}else{
-			$("input[name=checkNo]").prop("checked", false);
-		}
-	});
-});
 function move(value1, value2, value3, value4, value5){
 		var imsi = "";
 		imsi += "main.jsp";
@@ -166,22 +149,5 @@ function search(){
 	document.chugaTopForm.action = "main.jsp?menuGubun=memo_list";
 	document.chugaTopForm.method = "post";
 	document.chugaTopForm.submit();
-}
-function suntaekScript(){
-	var imsiCheckNo = "";
-	$('input[name="checkNo"]:checked').each(function (index){
-		if(imsiCheckNo != ""){
-			imsiCheckNo += ",";
-		}
-		imsiCheckNo += $(this).val();
-		
-	});
-	if(confirm('정말로 체크된 메모들을 모두 삭제하시겠습니까?')){
-		document.chugaTopForm.suntaekNo.value = imsiCheckNo;
-		document.chugaTopForm.action = "mainProc.jsp?menuGubun=memo_sakjeScriptProc";
-		document.chugaTopForm.method = "post";
-		document.chugaTopForm.submit();
-	}
-
 }
 </script>
