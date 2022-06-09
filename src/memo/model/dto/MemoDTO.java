@@ -7,9 +7,8 @@ public class MemoDTO {
 	private String name;
 	private String memo;
 	private String regiDate;
+	private Date regiDate2;
 	//private Date regiDate;
-	
-	
 	public int getNo() {
 		return no;
 	}
@@ -34,6 +33,14 @@ public class MemoDTO {
 	public void setRegiDate(String regiDate) {
 		this.regiDate = regiDate;
 	}
+	public Date getRegiDate2() {
+		return regiDate2;
+	}
+	public void setRegiDate2(Date regiDate2) {
+		this.regiDate2 = regiDate2;
+	}
 	
+	
+
 	
 }

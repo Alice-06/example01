@@ -43,6 +43,7 @@
 			<td>이름</td>
 			<td>메모</td>
 			<td>날짜</td>
+			<td>날짜2</td>
 		</tr>
 		<%
 		for (int i = 0; i < list.size(); i++) {
@@ -58,6 +59,7 @@
 			<td><%=imsidto.getName()%></td>
 			<td><a href="#"	onclick="move('memo_view','<%=imsidto.getNo()%>');"><%=memo%></a></td>
 			<td><%=imsidto.getRegiDate()%></td>
+			<td><%=imsidto.getRegiDate2().toString()%></td>
 		</tr>
 		<%
 			jj--;

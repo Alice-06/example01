@@ -30,7 +30,7 @@ public class MemoDAO {
 		ArrayList<MemoDTO> list = new ArrayList<>();
 		try {
 			conn = DB.dbConn();
-			String basicSql = "select no, name, memo, to_char(regiDate, 'YYYY-MM-DD HH24:MI:SS')regiDate from memo ";
+			String basicSql = "select no, name, memo, to_char(regiDate, 'YYYY-MM-DD HH24:MI:SS')regiDate2, regiDate from memo ";
 			if(searchGubun.equals("")||searchData.equals("")) {	}
 			else if(searchGubun.equals("name")) {
 				basicSql += "where name like ? ";
@@ -71,7 +71,8 @@ public class MemoDAO {
 				dto.setNo(rs.getInt("no"));
 				dto.setName(rs.getString("name"));
 				dto.setMemo(rs.getString("memo"));
-				dto.setRegiDate(rs.getString("regiDate"));
+				dto.setRegiDate(rs.getString("regiDate2"));
+				dto.setRegiDate2(rs.getDate("regiDate"));
 				
 				list.add(dto);
 			}
